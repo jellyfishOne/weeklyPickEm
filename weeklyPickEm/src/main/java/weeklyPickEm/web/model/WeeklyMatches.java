@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class WeeklyMatches {
-	private int matchWeek;
+	private Integer matchWeek;
 	private List<Match> matches;
-	private int weekMatchesGuessedRight;
-	private int weekMatchesGuessedWrong;
+	private Integer weekMatchesGuessedRight;
+	private Integer weekMatchesGuessedWrong;
 	
 	
 	@JsonFormat(pattern="MM-dd-yyyy HH:mm:ss")

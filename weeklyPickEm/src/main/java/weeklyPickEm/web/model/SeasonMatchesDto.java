@@ -28,8 +28,8 @@ public class SeasonMatchesDto {
 	private Integer totalCorrectPicks;
 	private Integer totalWrongPicks;
 	
-	private WeeklyMatches bestPickEmWeek;
-	private WeeklyMatches worstPickEmWeek;
+	private Integer bestPickEmWeek;
+	private Integer worstPickEmWeek;
 	
 
 }

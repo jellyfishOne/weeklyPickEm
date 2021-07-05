@@ -12,9 +12,8 @@ import lombok.NoArgsConstructor;
 public class Match {
 	private String teamOne;
 	private String teamTwo;
-	private boolean teamOnePicked;
-	private boolean teamTwoPicked;
-	private int teamOneScore;
-	private int teamTwoScore;
+	private String teamPicked;
+	private Integer teamOneScore;
+	private Integer teamTwoScore;
 
 }
