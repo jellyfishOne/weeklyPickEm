@@ -10,7 +10,7 @@ import weeklyPickEm.web.model.SeasonMatchesDto;
 @RequestMapping("api/v1/pickem")
 public class PickEmController {
 	
-	@GetMapping("season-matches")
+	@GetMapping("/season-matches")
 	public void getSeasonMatches() {
 		
 	}

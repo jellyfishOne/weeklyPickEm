@@ -1,76 +1,48 @@
 package weeklyPickEm;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
 import weeklyPickEm.repositories.MatchesRepository;
-import weeklyPickEm.web.model.Match;
+import weeklyPickEm.web.controller.PickEmController;
 import weeklyPickEm.web.model.SeasonMatchesDto;
-import weeklyPickEm.web.model.WeeklyMatches;
-import weeklyPickEm.web.services.PickEmServices;
 
-@SpringBootTest
+@WebMvcTest(PickEmController.class)
 class WeeklyPickEmApplicationTests {
 	
 	@Autowired
-	private MatchesRepository matchesRepo;
+	MockMvc mockMvc;
 	
-	@Autowired
-	private PickEmServices pickemServices;
-
+	@MockBean
+	MatchesRepository matchesRepository;
+	
+	@Mock 
+	SeasonMatchesDto seasonMatches = SeasonMatchesDto.builder().build();
+	
+	
+	
 	@Test
-	void testGetSeasonMatches() {
-		Match matchOne = Match.builder()
-				.teamOne("team A")
-				.teamTwo("team B")
-				.teamPicked("team A")
-				.teamOneScore(21)
-				.teamTwoScore(14)
-				.build();
-		Match matchTwo = Match.builder()
-				.teamOne("team 1A")
-				.teamTwo("team 1B")
-				.teamPicked("team 1B")
-				.teamOneScore(21)
-				.teamTwoScore(14)
-				.build();
-		List<Match> matches =  new ArrayList<Match>();
-		matches.add(matchOne);
-		matches.add(matchTwo);
+	void getSeasonMatches() throws Exception{
+		List<SeasonMatchesDto> seasonMatchesList = new ArrayList<SeasonMatchesDto>();
+		seasonMatchesList.add(seasonMatches);
+		seasonMatchesList.add(seasonMatches);
 		
+		given(matchesRepository.findAll()).willReturn(seasonMatchesList);
 		
-		WeeklyMatches weekOneMatches = WeeklyMatches.builder()
-				.matchWeek(1)
-				.matches(matches)
-				.weekMatchesGuessedRight(2)
-				.weekMatchesGuessedWrong(0)
-				.lastUpdate(LocalDateTime.now())
-				.build();
-		
-		List<WeeklyMatches> weeklySeasonMatches = new ArrayList<WeeklyMatches>();
-		weeklySeasonMatches.add(weekOneMatches);
-	
-		SeasonMatchesDto seasonMatches = SeasonMatchesDto.builder()
-				.userName("JellyFish")
-				.seasonYear(2021)
-				.weeklyMatches(weeklySeasonMatches)
-				.totalCorrectPicks(0)
-				.totalWrongPicks(1)
-				.bestPickEmWeek(1)
-				.worstPickEmWeek(2)
-				.build();
-		
-		matchesRepo.save(seasonMatches);
-		List<SeasonMatchesDto> season = matchesRepo.findAll();
-		assertNotNull(season);
-		
+		mockMvc.perform(get("/api/v1/pickem/season-matches")
+						.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk());
 	}
-
 }
