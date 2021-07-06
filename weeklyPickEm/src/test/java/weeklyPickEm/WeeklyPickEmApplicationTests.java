@@ -1,7 +1,11 @@
 package weeklyPickEm;
 
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
@@ -36,8 +40,6 @@ class WeeklyPickEmApplicationTests {
 	@Mock 
 	SeasonMatchesDto seasonMatches = SeasonMatchesDto.builder().build();
 	
-	
-	
 	@Test
 	void getSeasonMatches() throws Exception{
 		List<SeasonMatchesDto> seasonMatchesList = new ArrayList<SeasonMatchesDto>();
@@ -48,6 +50,11 @@ class WeeklyPickEmApplicationTests {
 		
 		mockMvc.perform(get("/api/v1/pickem/season-matches")
 						.accept(MediaType.APPLICATION_JSON))
-						.andExpect(status().isOk());
+						.andExpect(status().isOk())
+						.andDo(document("season-matches",
+								responseFields(
+										fieldWithPath("id").description("Season matches Id")
+										
+										)));
 	}
 }
