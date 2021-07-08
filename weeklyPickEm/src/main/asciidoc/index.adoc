@@ -9,21 +9,23 @@ RESTfull service that lets you pick the winner of all NFL matches every week.
 `BeerOrderControllerTest` makes a call to a very simple service and produces three
 documentation snippets.
 
-One showing how to make a request using cURL:
+GET SEASON MATCHES
 
-include::{snippets}/orders/curl-request.adoc[]
+Make a request using cURL:
+
+include::{snippets}/v1/get-season-matches/curl-request.adoc[]
 
 One showing the HTTP request:
 
-include::{snippets}/orders/http-request.adoc[]
+include::{snippets}/v1/get-season-matches/http-request.adoc[]
 
 And one showing the HTTP response:
 
-include::{snippets}/orders/http-response.adoc[]
+include::{snippets}/v1/get-season-matches/http-response.adoc[]
 
 Response Body:
-include::{snippets}/orders/response-body.adoc[]
+include::{snippets}/v1/get-season-matches/response-body.adoc[]
 
 
 Response Fields:
-include::{snippets}/orders/response-fields.adoc[]
+include::{snippets}/v1/get-season-matches/response-fields.adoc[]
