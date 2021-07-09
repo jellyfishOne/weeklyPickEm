@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.constraints.Null;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -21,15 +22,10 @@ public class SeasonMatchesDto {
 	@Id
 	@Null
 	private String id;
-	private String userName;
-	private Integer seasonYear;
+
+	private String seasonYear;
 	private List<WeeklyMatches> weeklyMatches;
 	
 	private Integer totalCorrectPicks;
 	private Integer totalWrongPicks;
-	
-	private Integer bestPickEmWeek;
-	private Integer worstPickEmWeek;
-	
-
 }
