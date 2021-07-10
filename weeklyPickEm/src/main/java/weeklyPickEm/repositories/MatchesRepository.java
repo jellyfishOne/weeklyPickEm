@@ -10,7 +10,7 @@ import weeklyPickEm.web.model.SeasonMatchesDto;
 @Repository
 public interface MatchesRepository extends MongoRepository<SeasonMatchesDto, String>{
 	
-	SeasonMatchesDto findBySeasonYear(String seasonYear);
+	Optional<SeasonMatchesDto> findBySeasonYear(String seasonYear);
 	Optional<SeasonMatchesDto> findById(String Id);
 
 }

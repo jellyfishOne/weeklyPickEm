@@ -13,19 +13,19 @@ GET SEASON MATCHES
 
 Make a request using cURL:
 
-include::{snippets}/v1/get-season/curl-request.adoc[]
+include::{snippets}/v1/season-matches/curl-request.adoc[]
 
 One showing the HTTP request:
 
-include::{snippets}/v1/get-season/http-request.adoc[]
+include::{snippets}/v1/season-matches/http-request.adoc[]
 
 And one showing the HTTP response:
 
-include::{snippets}/v1/get-season/http-response.adoc[]
+include::{snippets}/v1/season-matches/http-response.adoc[]
 
 Response Body:
-include::{snippets}/v1/get-season/response-body.adoc[]
+include::{snippets}/v1/season-matches/response-body.adoc[]
 
 
 Response Fields:
-include::{snippets}/v1/get-season/response-fields.adoc[]
+include::{snippets}/v1/season-matches/response-fields.adoc[]

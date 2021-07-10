@@ -25,4 +25,5 @@ public class PickEmController {
 		Optional<SeasonMatchesDto> seasonMatches = pickEmService.getSeason(Id);
 		return ResponseEntity.status(HttpStatus.OK).body(seasonMatches);
 	}
+	
 }
