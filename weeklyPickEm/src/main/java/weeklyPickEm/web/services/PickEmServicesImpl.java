@@ -25,4 +25,9 @@ public class PickEmServicesImpl implements PickEmServices{
 		 return matchesRepo.findById(Id);
 		
 	}
+
+	@Override
+	public Optional<SeasonMatchesDto> getSeasonByYear(String seasonYear) {
+		return matchesRepo.findBySeasonYear(seasonYear);
+	}
 }

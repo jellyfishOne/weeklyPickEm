@@ -7,5 +7,6 @@ import weeklyPickEm.web.model.SeasonMatchesDto;
 
 public interface PickEmServices {
 	Optional<SeasonMatchesDto> getSeason(String Id);
+	Optional<SeasonMatchesDto> getSeasonByYear(String seasonYear);
 
 }
