@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import weeklyPickEm.repositories.MatchesRepository;
 import weeklyPickEm.web.model.Match;
 import weeklyPickEm.web.model.SeasonMatchesDto;
-import weeklyPickEm.web.model.WeeklyMatches;
+import weeklyPickEm.web.model.AllMatchesForTheWeek;
 
 @Service
 public class PickEmServicesImpl implements PickEmServices{

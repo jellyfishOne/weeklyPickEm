@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class WeeklyMatches {
+public class AllMatchesForTheWeek {
 	private Integer matchWeek;
 	private List<Match> matches;
 	private Integer weekMatchesGuessedRight;

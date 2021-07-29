@@ -31,7 +31,7 @@ import weeklyPickEm.repositories.MatchesRepository;
 import weeklyPickEm.web.controller.PickEmController;
 import weeklyPickEm.web.model.Match;
 import weeklyPickEm.web.model.SeasonMatchesDto;
-import weeklyPickEm.web.model.WeeklyMatches;
+import weeklyPickEm.web.model.AllMatchesForTheWeek;
 import weeklyPickEm.web.services.PickEmServices;
 
 @ExtendWith(RestDocumentationExtension.class)
@@ -62,14 +62,14 @@ class WeeklyPickEmApplicationTests {
 			List<Match> matchList = new ArrayList<Match>();
 			matchList.add(match);
 			
-			WeeklyMatches weeklyMatches = WeeklyMatches.builder()
+			AllMatchesForTheWeek weeklyMatches = AllMatchesForTheWeek.builder()
 			.matchWeek(1)
 			.matches(matchList)
 			.weekMatchesGuessedRight(4)
 			.weekMatchesGuessedWrong(2)
 			.build();
 			
-			List<WeeklyMatches> weeklyMatchesList = new ArrayList<WeeklyMatches>();
+			List<AllMatchesForTheWeek> weeklyMatchesList = new ArrayList<AllMatchesForTheWeek>();
 			weeklyMatchesList.add(weeklyMatches);
 			
 			this.seasonMatchesDto = SeasonMatchesDto.builder()

@@ -20,10 +20,17 @@ public class PickEmController {
 	@Autowired
 	PickEmServices pickEmService;
 
+	/*
+	 * TODO
+	 * GET All matches for the week
+	 */
+	
 	@GetMapping("/season-matches/{Id}")
 	public ResponseEntity<Optional<SeasonMatchesDto>> getSeasonMatches(@PathVariable("Id") String Id) {
 		Optional<SeasonMatchesDto> seasonMatches = pickEmService.getSeason(Id);
 		return ResponseEntity.status(HttpStatus.OK).body(seasonMatches);
 	}
+	
+	
 	
 }

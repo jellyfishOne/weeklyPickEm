@@ -24,7 +24,7 @@ public class SeasonMatchesDto {
 	private String id;
 
 	private String seasonYear;
-	private List<WeeklyMatches> weeklyMatches;
+	private List<AllMatchesForTheWeek> weeklyMatches;
 	
 	private Integer totalCorrectPicks;
 	private Integer totalWrongPicks;
