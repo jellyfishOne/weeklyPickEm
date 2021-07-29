@@ -27,6 +27,7 @@ import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import jdk.net.SocketFlow.Status;
 import weeklyPickEm.repositories.MatchesRepository;
 import weeklyPickEm.web.controller.PickEmController;
 import weeklyPickEm.web.model.Match;
@@ -108,5 +109,14 @@ class WeeklyPickEmApplicationTests {
 										fieldWithPath("totalCorrectPicks").type("Integer").description("Total number of correct picks for the season"),
 										fieldWithPath("totalWrongPicks").type("Integer").description("Total number of wrong picks for the season")
 										))).andDo(MockMvcResultHandlers.print());
+	}
+	
+	@Test
+	void getSeasonMatchesByYear() throws Exception{
+		given(services.getSeason(any())).willReturn(Optional.of(seasonMatchesDto));
+		mockMvc.perform(get("/api/v1/pickem/season-matches-by-year/{seasonYear}", "2021")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+		
 	}
 }

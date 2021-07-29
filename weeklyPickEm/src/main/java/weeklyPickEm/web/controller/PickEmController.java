@@ -22,10 +22,11 @@ public class PickEmController {
 
 	/*
 	 * TODO
+	 * GET SeasonMatches by year
 	 * GET All matches for the week
 	 * GET made picks for the week
 	 * POST Submit picks for all matches in the week
-	 * GET SeasonMatches by year
+	 * 
 	 */
 	
 	@GetMapping("/season-matches/{Id}")
@@ -34,7 +35,7 @@ public class PickEmController {
 		return ResponseEntity.status(HttpStatus.OK).body(seasonMatches);
 	}
 	
-	@GetMapping("/season-matches/{seasonYear}")
+	@GetMapping("/season-matches-by-year/{seasonYear}")
 	public ResponseEntity<Optional<SeasonMatchesDto>>  getSeasonMatchesByYear(@PathVariable("seasonYear")String seasonYear) {
 		Optional<SeasonMatchesDto>  seasonMatches = pickEmService.getSeasonByYear(seasonYear);
 		return ResponseEntity.status(HttpStatus.OK).body(seasonMatches);
