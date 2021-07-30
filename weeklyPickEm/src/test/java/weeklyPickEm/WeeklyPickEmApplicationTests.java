@@ -113,10 +113,31 @@ class WeeklyPickEmApplicationTests {
 	
 	@Test
 	void getSeasonMatchesByYear() throws Exception{
-		given(services.getSeason(any())).willReturn(Optional.of(seasonMatchesDto));
+		given(services.getSeasonByYear(any())).willReturn(Optional.of(seasonMatchesDto));
+		
 		mockMvc.perform(get("/api/v1/pickem/season-matches-by-year/{seasonYear}", "2021")
 				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
-		
+				.andExpect(status().isOk())
+				.andDo(document("v1/season-matches-by-year",
+						pathParameters(
+								parameterWithName("seasonYear").description("Year of desired season")
+								),
+						responseFields(
+								fieldWithPath("id").type("String").description("Id of desired season"),
+								fieldWithPath("seasonYear").type("String").description("Year of season"),
+								fieldWithPath("weeklyMatches[]").type("ArrayList").description("An ArrayList of Matches for each week of the season"),
+								fieldWithPath("weeklyMatches[].matchWeek").type("Integer").description("Number of week in the season"),
+								fieldWithPath("weeklyMatches[].matches[]").type("ArrayList").description("Matches for that given week"),
+								fieldWithPath("weeklyMatches[].matches[].teamOne").type("String").description("One team of the match"),
+								fieldWithPath("weeklyMatches[].matches[].teamTwo").type("String").description("Second team of the match"),
+								fieldWithPath("weeklyMatches[].matches[].teamOneScore").type("Integer").description("Score of teamOne"),
+								fieldWithPath("weeklyMatches[].matches[].teamTwoScore").type("Integer").description("Score of teamTwo"),
+								fieldWithPath("weeklyMatches[].matches[].teamPicked").type("String").description("Team picked by the user"),
+								fieldWithPath("weeklyMatches[].weekMatchesGuessedRight").type("Integer").description("Number of correct picks made for a given week"),
+								fieldWithPath("weeklyMatches[].weekMatchesGuessedWrong").type("Integer").description("Number of wrong picks made for a given week"),
+								fieldWithPath("weeklyMatches[].lastUpdate").type("LocalDateTime").description("Last time server updated scores"),
+								fieldWithPath("totalCorrectPicks").type("Integer").description("Total number of correct picks for the season"),
+								fieldWithPath("totalWrongPicks").type("Integer").description("Total number of wrong picks for the season")
+								)));
 	}
 }
