@@ -6,10 +6,10 @@ Juan Renteria;
 
 RESTfull service that lets you pick the winner of all NFL matches every week.
 
-`BeerOrderControllerTest` makes a call to a very simple service and produces three
+`WeeklyPickEmAppplicationTest` makes a call to a very simple service and produces three
 documentation snippets.
 
-GET SEASON MATCHES
+GET SEASON MATCHES WITH ID
 
 Make a request using cURL:
 
@@ -29,3 +29,24 @@ include::{snippets}/v1/season-matches/response-body.adoc[]
 
 Response Fields:
 include::{snippets}/v1/season-matches/response-fields.adoc[]
+
+GET SEASON MATCHES BY YEAR
+
+Make a request using cURL:
+
+include::{snippets}/v1/season-matches-by-year/curl-request.adoc[]
+
+One showing the HTTP request:
+
+include::{snippets}/v1/season-matches-by-year/http-request.adoc[]
+
+And one showing the HTTP response:
+
+include::{snippets}/v1/season-matches-by-year/http-response.adoc[]
+
+Response Body:
+include::{snippets}/v1/season-matches-by-year/response-body.adoc[]
+
+
+Response Fields:
+include::{snippets}/v1/season-matches-by-year/response-fields.adoc[]
