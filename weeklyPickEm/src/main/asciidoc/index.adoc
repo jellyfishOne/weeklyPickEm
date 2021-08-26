@@ -15,11 +15,11 @@ Make a request using cURL:
 
 include::{snippets}/v1/season-matches/curl-request.adoc[]
 
-One showing the HTTP request:
+HTTP request:
 
 include::{snippets}/v1/season-matches/http-request.adoc[]
 
-And one showing the HTTP response:
+HTTP response:
 
 include::{snippets}/v1/season-matches/http-response.adoc[]
 
@@ -36,11 +36,11 @@ Make a request using cURL:
 
 include::{snippets}/v1/season-matches-by-year/curl-request.adoc[]
 
-One showing the HTTP request:
+HTTP request:
 
 include::{snippets}/v1/season-matches-by-year/http-request.adoc[]
 
-And one showing the HTTP response:
+HTTP response:
 
 include::{snippets}/v1/season-matches-by-year/http-response.adoc[]
 

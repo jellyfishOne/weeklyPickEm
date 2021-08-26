@@ -22,7 +22,6 @@ public class PickEmController {
 
 	/*
 	 * TODO
-	 * GET SeasonMatches by year
 	 * GET All matches for the week
 	 * GET made picks for the week
 	 * POST Submit picks for all matches in the week
