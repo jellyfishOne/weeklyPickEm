@@ -16,11 +16,8 @@ public interface MatchesRepository extends MongoRepository<SeasonMatchesDto, Str
 	Optional<SeasonMatchesDto> findBySeasonYear(String seasonYear);
 	Optional<SeasonMatchesDto> findById(String Id);
 	
+	//"seasonYear":"2021","weeklyMatches":[{"matchWeek":1,"matches": [{"teamOne":"TeamONe"...
 	@Query("{'seasonYear': ?0, 'weeklyMatches.matchWeek' : ?0}")
 	List<AllMatchesForTheWeek> findBySeasonyearAndWeeklyMatchesMatchWeek(String seasonYear, int matchWeek);
 	
-	/*
-	 * "seasonYear":"2021","weeklyMatches":[{"matchWeek":1,"matches": [{"teamOne":"TeamONe"...
-	 */
-
 }

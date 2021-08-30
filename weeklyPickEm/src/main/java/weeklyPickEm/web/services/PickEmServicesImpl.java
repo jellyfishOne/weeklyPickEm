@@ -1,7 +1,5 @@
 package weeklyPickEm.web.services;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import weeklyPickEm.repositories.MatchesRepository;
-import weeklyPickEm.web.model.Match;
-import weeklyPickEm.web.model.SeasonMatchesDto;
 import weeklyPickEm.web.model.AllMatchesForTheWeek;
+import weeklyPickEm.web.model.SeasonMatchesDto;
 
 @Service
 public class PickEmServicesImpl implements PickEmServices{
@@ -28,5 +25,10 @@ public class PickEmServicesImpl implements PickEmServices{
 	@Override
 	public Optional<SeasonMatchesDto> getSeasonByYear(String seasonYear) {
 		return matchesRepo.findBySeasonYear(seasonYear);
+	}
+
+	@Override
+	public List<AllMatchesForTheWeek> getAllWeekMatchesByYear(String seasonYear, Integer matchWeek) {
+		return matchesRepo.findBySeasonyearAndWeeklyMatchesMatchWeek(seasonYear, matchWeek);
 	}
 }

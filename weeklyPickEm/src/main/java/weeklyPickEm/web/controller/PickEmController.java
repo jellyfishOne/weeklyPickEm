@@ -1,5 +1,6 @@
 package weeklyPickEm.web.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import weeklyPickEm.web.model.AllMatchesForTheWeek;
 import weeklyPickEm.web.model.SeasonMatchesDto;
 import weeklyPickEm.web.services.PickEmServices;
 
@@ -38,6 +40,14 @@ public class PickEmController {
 	public ResponseEntity<Optional<SeasonMatchesDto>>  getSeasonMatchesByYear(@PathVariable("seasonYear")String seasonYear) {
 		Optional<SeasonMatchesDto>  seasonMatches = pickEmService.getSeasonByYear(seasonYear);
 		return ResponseEntity.status(HttpStatus.OK).body(seasonMatches);
+	}
+	
+	@GetMapping("/week-matches-by-year/{seasonYear}/{matchWeek}")
+	public ResponseEntity<List<AllMatchesForTheWeek>> getAllWeekMatchesByYear(@PathVariable("seasonYear")String seasonYear,
+														@PathVariable("matchWeek")Integer matchWeek){
+		List<AllMatchesForTheWeek> allMatchesForTheWeek = pickEmService.getAllWeekMatchesByYear(seasonYear, matchWeek);
+		return ResponseEntity.status(HttpStatus.OK).body(allMatchesForTheWeek);
+		
 	}
 	
 	
